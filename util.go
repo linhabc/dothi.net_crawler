@@ -39,16 +39,16 @@ func (users *Users) getNexURL(doc *goquery.Document) string {
 	aLink := doc.Find(".pager_controls > a")
 	nextPageLink, _ := aLink.Last().Attr("href")
 
-	nextPageLink = "https://dothi.net" + nextPageLink
-
-	print("NEXTPAGE: ")
-	println(nextPageLink)
-
 	// Trường hợp không có url
 	if nextPageLink == "" {
 		println("End of Category")
 		return ""
 	}
+
+	nextPageLink = "https://dothi.net" + nextPageLink
+
+	print("NEXTPAGE: ")
+	println(nextPageLink)
 
 	return nextPageLink
 }
@@ -59,6 +59,7 @@ func (users *Users) getAllUserInformation(doc *goquery.Document, category string
 		userLink, _ := s.Find("a").Attr("href")
 		wg.Add(1)
 		userLink = "https://dothi.net" + userLink
+
 		go users.getUserInformation(userLink, category, &wg, f, db)
 	})
 	wg.Wait()
@@ -73,17 +74,19 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 	}
 
 	tbBody := res.Find("#tbl2 tbody")
-	tbRowTitle := tbBody.Find("tr:nth-child(2)").Text()
-	var tbRow *goquery.Selection
-	if tbRowTitle == "Di động" {
-		tbRow = tbBody.Find("tr:nth-child(2)")
-	} else {
-		tbRow = tbBody.Find("tr:nth-child(3)")
-	}
-	phoneNum := tbRow.Find("td:nth-child(2)").Text()
+	var phoneNum string
+	tbBody.Find("tr").Each(func(i int, s *goquery.Selection) {
+		s.Find("td:nth-child(1)").Each(func(i int, s2 *goquery.Selection) {
+			if s2.Text() == "Di động" {
+				phoneNum = s.Find("td:nth-child(2)").Text()
+			}
+		})
+	})
+
 	phoneNum = strings.TrimSpace(phoneNum)
 
 	if len(phoneNum) == 0 {
+		println("phone num = 0 " + url)
 		return
 	}
 
@@ -98,9 +101,8 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 	if len(checkExist) != 0 {
 		println("Exist: " + id)
 		return
-	} else {
-		println("None_exist: " + id)
 	}
+	println("None_exist: " + id)
 
 	user := User{
 		Id:          id,

@@ -77,9 +77,18 @@ func crawlFromCategory(category Category, f *os.File) {
 	users.getAllUserInformation(res, category.Title, f, db)
 	users.TotalPages++
 
+	prevPage := category.URL
+
 	for i := 2; i <= 100; i++ {
 		users.TotalPages++
 		nextPageLink := users.getNexURL(res)
+
+		if prevPage == nextPageLink {
+			println("End of Category")
+			break
+		} else {
+			prevPage = nextPageLink
+		}
 
 		if nextPageLink == "" {
 			break
