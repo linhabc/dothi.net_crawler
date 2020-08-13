@@ -73,17 +73,47 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 		return
 	}
 
-	tbBody := res.Find("#tbl2 tbody")
+	var userName string
 	var phoneNum string
-	tbBody.Find("tr").Each(func(i int, s *goquery.Selection) {
+	var location string
+	var time string
+	// var email string
+
+	title := res.Find(".product-detail h1").Text()
+	price := res.Find(".spanprice").Text()
+
+	tb1Body := res.Find("#tbl1 tbody")
+	tb2Body := res.Find("#tbl2 tbody")
+
+	tb2Body.Find("tr").Each(func(i int, s *goquery.Selection) {
 		s.Find("td:nth-child(1)").Each(func(i int, s2 *goquery.Selection) {
-			if s2.Text() == "Di động" {
+			switch s2.Text() {
+			case userNameStr:
+				userName = s.Find("td:nth-child(2)").Text()
+			case phoneStr:
 				phoneNum = s.Find("td:nth-child(2)").Text()
+			case locationStr:
+				location = s.Find("td:nth-child(2)").Text()
+				// case emailStr:
+				// 	email = s.Find("td:nth-child(2)").Text()
 			}
 		})
 	})
 
+	tb1Body.Find("tr").Each(func(i int, s *goquery.Selection) {
+		s.Find("td:nth-child(1)").Each(func(i int, s2 *goquery.Selection) {
+			if s2.Text() == timeStr {
+				time = s.Find("td:nth-child(2)").Text()
+			}
+		})
+	})
+
+	userName = strings.TrimSpace(userName)
 	phoneNum = strings.TrimSpace(phoneNum)
+	title = strings.TrimSpace(title)
+	time = strings.TrimSpace(time)
+	location = strings.TrimSpace(location)
+	price = strings.TrimSpace(price)
 
 	if len(phoneNum) == 0 {
 		println("phone num = 0 " + url)
@@ -105,8 +135,13 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 	println("None_exist: " + id)
 
 	user := User{
-		Id:          id,
+		ID:          id,
 		PhoneNumber: phoneNum,
+		UserName:    userName,
+		Title:       title,
+		Time:        time,
+		Location:    location,
+		Price:       price,
 	}
 
 	_ = putData(db, id, phoneNum)
@@ -127,3 +162,10 @@ func checkError(err error) {
 		log.Println(err)
 	}
 }
+
+const userNameStr = "Tên liên lạc"
+const phoneStr = "Di động"
+const timeStr = "Ngày đăng tin"
+const locationStr = "Địa chỉ"
+
+// const emailStr = "Email"

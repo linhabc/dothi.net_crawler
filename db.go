@@ -39,7 +39,7 @@ func exportDatabaseToJson(url string) {
 		value := bytesToString(iter.Value())
 		count++
 		user := User{
-			Id:          key,
+			ID:          key,
 			PhoneNumber: value,
 		}
 

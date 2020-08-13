@@ -16,17 +16,25 @@ func newCategories() *Categories {
 	return &Categories{}
 }
 
+// User is a
 type User struct {
-	Id          string `json:"id"`
+	ID          string `json:"id"`
 	PhoneNumber string `json:"phone"`
+	UserName    string `json:"user_name"`
+	Title       string `json:"title"`
+	Time        string `json:"time"`
+	Location    string `json:"location"`
+	Price       string `json:"price"`
 }
 
+// Users is a
 type Users struct {
 	TotalUsers int    `json:"totalUsers"`
 	TotalPages int    `json:"totalPages"`
 	List       []User `json:"users"`
 }
 
+// NewUsers is a
 func NewUsers() *Users {
 	return &Users{}
 }
