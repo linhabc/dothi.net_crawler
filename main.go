@@ -35,7 +35,7 @@ func crawlAllFromCategories(categories Categories) {
 		for i := 0; i < len(categories.List); i++ {
 			jobs <- categories.List[i]
 		}
-		time.Sleep(3 * time.Hour)
+		time.Sleep(1 * time.Hour)
 	}
 
 	close(jobs)
