@@ -2,65 +2,65 @@
   "total": 17,
   "categories": [
     {
-      "title": "Bán căn hộ chung cư",
+      "title": "Ban_can_ho_chung_cu",
       "url": "https://dothi.net/ban-can-ho-chung-cu.htm"
     },
-    { "title": "Bán nhà riêng", "url": "https://dothi.net/ban-nha-rieng.htm" },
+    { "title": "Ban_nha_rieng", "url": "https://dothi.net/ban-nha-rieng.htm" },
     {
-      "title": "Bán nhà biệt thự, liền kề",
+      "title": "Ban_nha_biet_thu_lien_ke",
       "url": "https://dothi.net/ban-nha-biet-thu-lien-ke.htm"
     },
     {
-      "title": "Bán nhà mặt phố",
+      "title": "Ban_nha_mat_pho",
       "url": "https://dothi.net/ban-nha-mat-pho.htm"
     },
     {
-      "title": "Bán đất nền dự án",
+      "title": "Ban_dat_nen_du_an",
       "url": "https://dothi.net/ban-dat-nen-du-an.htm"
     },
-    { "title": "Bán đất", "url": "https://dothi.net/ban-dat.htm" },
+    { "title": "Ban_dat", "url": "https://dothi.net/ban-dat.htm" },
     {
-      "title": "Bán trang trại, khu nghỉ dưỡng",
+      "title": "Ban_trang_trai_khu_nghi_duong",
       "url": "https://dothi.net/ban-trang-trai-khu-nghi-duong.htm"
     },
     {
-      "title": "Bán kho, nhà xưởng",
+      "title": "Ban_kho_nha_xuong",
       "url": "https://dothi.net/ban-kho-nha-xuong.htm"
     },
     {
-      "title": "Bán loại bất động sản khác",
+      "title": "Ban_loai_bat_dong_san_khac",
       "url": "https://dothi.net/ban-loai-bat-dong-san-khac.htm"
     },
     {
-      "title": "Cho thuê căn hộ chung cư",
+      "title": "Cho_thue_can_ho_chung_cu",
       "url": "https://dothi.net/cho-thue-can-ho-chung-cu.htm"
     },
     {
-      "title": "Cho thuê nhà riêng",
+      "title": "Cho_thue_nha_rieng",
       "url": "https://dothi.net/cho-thue-nha-rieng.htm"
     },
     {
-      "title": "Cho thuê nhà mặt phố",
+      "title": "Cho_thue_nha_mat_pho",
       "url": "https://dothi.net/cho-thue-nha-mat-pho.htm"
     },
     {
-      "title": "Cho thuê nhà trọ, phòng trọ",
+      "title": "Cho_thue_nha_tro_phong_tro",
       "url": "https://dothi.net/cho-thue-nha-tro-phong-tro.htm"
     },
     {
-      "title": "Cho thuê văn phòng",
+      "title": "Cho_thue_van_phong",
       "url": "https://dothi.net/cho-thue-van-phong.htm"
     },
     {
-      "title": "Cho thuê cửa hàng, ki ốt",
+      "title": "Cho_thue_cua_hang_ki_ot",
       "url": "https://dothi.net/cho-thue-cua-hang-ki-ot.htm"
     },
     {
-      "title": "Cho thuê kho, nhà xưởng, đất",
+      "title": "Cho_thue_kho_nha_xuong_dat",
       "url": "https://dothi.net/cho-thue-kho-nha-xuong-dat.htm"
     },
     {
-      "title": "Cho thuê loại bất động sản khác",
+      "title": "Cho_thue_loai_bat_dong_san_khac",
       "url": "https://dothi.net/cho-thue-loai-bat-dong-san-khac.htm"
     }
   ]
