@@ -77,6 +77,8 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 	var phoneNum string
 	var location string
 	var time string
+	var itemType string
+
 	// var email string
 
 	title := res.Find(".product-detail h1").Text()
@@ -104,6 +106,8 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 		s.Find("td:nth-child(1)").Each(func(i int, s2 *goquery.Selection) {
 			if s2.Text() == timeStr {
 				time = s.Find("td:nth-child(2)").Text()
+			} else if s2.Text() == itemTypeStr {
+				itemType = s.Find("td:nth-child(2)").Text()
 			}
 		})
 	})
@@ -114,6 +118,7 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 	time = strings.TrimSpace(time)
 	location = strings.TrimSpace(location)
 	price = strings.TrimSpace(price)
+	itemType = strings.TrimSpace(itemType)
 
 	if len(phoneNum) == 0 {
 		println("phone num = 0 " + url)
@@ -142,6 +147,7 @@ func (users *Users) getUserInformation(url string, category string, wg *sync.Wai
 		Time:        time,
 		Location:    location,
 		Price:       price,
+		Type:        itemType,
 	}
 
 	_ = putData(db, id, phoneNum)
@@ -167,5 +173,6 @@ const userNameStr = "Tên liên lạc"
 const phoneStr = "Di động"
 const timeStr = "Ngày đăng tin"
 const locationStr = "Địa chỉ"
+const itemTypeStr = "Loại tin rao"
 
 // const emailStr = "Email"

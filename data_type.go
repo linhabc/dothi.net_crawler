@@ -25,6 +25,7 @@ type User struct {
 	Time        string `json:"time"`
 	Location    string `json:"location"`
 	Price       string `json:"price"`
+	Type        string `json:"type"`
 }
 
 // Users is a
